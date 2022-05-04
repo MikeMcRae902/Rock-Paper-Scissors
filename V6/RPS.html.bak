@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors! Class Project</title>
+    <link rel="stylesheet" href="RPStyle.css">
+</head>
+<body>
+
+    <div id="game">
+        <!--All game functionality happens in here-->
+        <div id="mainMenu" class="overlay">
+            <!--Main Menu options go here-->
+            <div>
+                <button type="button" onclick="openGame()"><img src="charmander.jpg" width="200" height="100" alt="Play"></button><br>
+                <button type="button" onclick="openShop()"><img src="gastly.png" width="200" height="100" alt="shop"></button><br>  <!--Test for pause function on empty shop--> 
+                <button type="button" onclick="openNav()"><img src="pika sit.jpg" width="200" height="100" alt="options"></button><br>
+                <button type="button" class="choice" id="reset"><img src="megaman.jpg" width="200" height="100" alt="reset">reset</button><br>
+            </div>
+        </div>
+        <div id="optionsMenu" class="overlay">
+            <!--Settings options go here (volume, etc.)-->
+            <div id="Options">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <p>Sound FX</p>
+                <button id="soundSetting" onclick="soundToggle()">I/O</button>
+                <p>Music</p>
+                <button id="musicSetting" onclick="musicToggle()">I/O</button>
+                <p>Etc</p>
+                <button type="button" class="Menu" onclick="closeNav()"><p>Back</p></button>
+            </div>
+        </div>
+        <div id="pauseMenu" class="overlay">
+            <!--Pause options go here-->
+                <a href="javascript:void(0)" class="closebtn" onclick="closePause()">&times;</a>
+                <button type="button" class="Menu" onclick="closePause()"><p>Resume Game</p></button><br>
+                <button class="menu" onclick="openNav()">Options</button><br>
+                <button type="button" onclick="openMenu()">Main Menu</button>
+        </div>
+        <div id="scoresTable" class="overlay">
+            <!--Scores Table goes here-->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeScores()">&times;</a>
+                <fieldset id ="entryScore">
+                    <legend>Insert Name</legend>
+                    <input id="plName" type="text" placeholder="Enter Name Here">
+
+                    <input type="submit" value="Submit Name" id="submitButton">
+             <button  id="refresh" style="background: url(Random.png) no-repeat center;" class="choice">Confirm</button>
+			 <button  id="score" style="background: url(Random.png) no-repeat center;" class="choice">View High Scores</button>
+                  </fieldset>
+
+                  <fieldset id="displayScore">
+                     <legend>RECENT SCORES</legend>
+					     <ol id='list'>
+<li><a id="link1">No High Score set</a></li>
+<li><a id="link2">No High Score set</a></li>
+<li><a id="link3">No High Score set</a></li>
+<li><a id="link4">No High Score set</a></li>
+<li><a id="link5">No High Score set</a></li>
+    </ol>
+                    <div id="lsOutput"></div>
+                  </fieldset>
+                <button type="button" class="Menu" onclick="closeScores()"><p>Back</p></button>
+
+        </div>
+        <div id="pointsShop">
+            <!--Points Shop options go here-->
+        </div>
+        <div id="field">
+            <h2>Computer Choice: <span id="computer-choice"></span></h2>
+            <h2>Your Choice: <span id="user-choice"></span></h2>
+            <h2>Result: <span id="result"></span></h2>
+            <h2>Total Games Played: <span id="totalGames"></span></h2>
+            <h2>Your Score: <span id="theScore"></span></h2>
+            <h2>COM Score: <span id="compScore"></span></h2>
+            <h2>Draws: <span id="drawScore"></span></h2>
+            <!--Where the gameplay happens-->
+            <div id="rockPaperScissors">
+                <table>
+                    <!--Rock/Paper/Scissors/Random options go here-->
+                    <tr>
+                        <button  id="rock" style="background: url(Rock.png) no-repeat center;" class="choice">rock</button>
+                        <button  id="paper" style="background: url(Paper.png) no-repeat center;" class="choice">paper</button>
+                        <button  id="scissors" style="background: url(Scissors.png) no-repeat center;" class="choice">scissors</button>
+                        <button  id="random" style="background: url(Random.png) no-repeat center;" class="choice">random</button>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="lizardSpock">
+                <table>
+                    <!--Rock/Paper/Scissors/Lizard/Spock options go here-->
+                    <tr>
+                        <td>rock</td>   <!--Rock-->
+                        <td>paper</td>   <!--Paper-->
+                        <td>scissors</td>   <!--Scissors-->
+                        <td>lizard</td>   <!--Lizard-->
+                        <td>spock</td>   <!--Spock-->
+                        <td>random</td>   <!--Random-->
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <a href="javascript:void(0)" id="scoresButton" onclick="toggleScores()">
+            <div>
+                Scores
+            </div>
+        </a>
+        <a href="javascript:void(0)" id="pauseButton" onclick="togglePause()">
+            <div>
+                Pause
+            </div>
+        </a>
+    </div>
+    
+    <script src="RPScript.js"></script>
+</body>
+</html>

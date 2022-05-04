@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors! Class Project</title>
+    <link rel="stylesheet" href="RPStyle.css">
+  </head>
+  <body>
+    <div id="game">
+      <!--All game functionality happens in here-->
+      <div id="mainMenu" class="overlay">
+        <!--Main Menu options go here-->
+        <div>
+          <button type="button" onclick="openGame()" id="menuButton">Play Rock Paper Scissors!</button>
+          <br>
+          <button type="button" onclick="openShop()" id="menuButton">Points Shop (Under Construction)</button>
+          <br>
+          <!--Test for pause function on empty shop-->
+          <button type="button" onclick="openNav()" id="menuButton">Options</button>
+          <br>
+          <button id="reset" class="choice">Clear Score Data</button>
+        </div>
+      </div>
+      <div id="optionsMenu" class="overlay">
+        <!--Settings options go here (volume, etc.)-->
+        <div id="Options">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <p>Sound FX</p>
+          <button id="soundSetting" onclick="soundToggle()">I/O</button>
+          <p>Music</p>
+          <button id="musicSetting" onclick="musicToggle()">I/O</button><br>
+          <button id="menuButton" onclick="closeNav()">
+            <p>Back</p>
+          </button>
+        </div>
+      </div>
+      <div id="pauseMenu" class="overlay">
+        <!--Pause options go here-->
+        <a href="javascript:void(0)" class="closebtn" onclick="closePause()">&times;</a>
+        <button type="button" class="Menu" id="menuButton" onclick="closePause()">
+          <p>Resume Game</p>
+        </button>
+        <br>
+        <button class="menu" id="menuButton" onclick="openNav()">Options</button>
+        <br>
+        <button type="button" id="menuButton" onclick="openMenu()">Main Menu</button>
+      </div>
+      <div id="scoresTable" class="overlay">
+        <!--Scores Table goes here-->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeScores()">&times;</a>
+        <fieldset id="entryScore">
+          <legend>Insert Name</legend>
+          <input id="plName" type="text" placeholder="Enter Name Here">
+          <input type="submit" value="Submit Name" id="submitButton">
+          <button id="refresh" style="background: url(Random.png) no-repeat center;" class="choice">Confirm</button>
+        </fieldset>
+        <fieldset id="displayScore">
+          <legend>RECENT SCORES</legend>
+          <ol id='list'>
+            <li>
+              <a id="link1">No High Score set</a>
+            </li>
+            <li>
+              <a id="link2">No High Score set</a>
+            </li>
+            <li>
+              <a id="link3">No High Score set</a>
+            </li>
+            <li>
+              <a id="link4">No High Score set</a>
+            </li>
+            <li>
+              <a id="link5">No High Score set</a>
+            </li>
+          </ol>
+          <div id="lsOutput"></div>
+        </fieldset>
+        <button id="back" class="choice">Back</button>
+      </div>
+      <div id="pointsShop">
+        <!--Points Shop options go here-->
+      </div>
+      <div id="field">
+        <h2 id="comChoice"><span id="computer-choice"></span><- COM Choice
+        </h2>
+        <h2 id="userChoice">Your Choice -><span id="user-choice"></span>
+        </h2>
+        <h1 id="resultDisplay"><span id="result"></span>
+        </h1>
+        <!--Where the gameplay happens-->
+        <div id="rockPaperScissors">
+          <table>
+            <!--Rock/Paper/Scissors/Random options go here-->
+            <tr>
+              <button id="rock" class="choice" onclick="playAudio()"></button>
+              <button id="paper" class="choice" onclick="playAudio()"></button>
+              <button id="scissors" class="choice" onclick="playAudio()"></button>
+              <button id="random" class="choice" onclick="playAudio('random')"></button>
+            </tr>
+          </table>
+        </div>
+        <div id="lizardSpock">
+          <table>
+            <!--Rock/Paper/Scissors/Lizard/Spock options go here-->
+            <tr>
+              <td>rock</td>
+              <!--Rock-->
+              <td>paper</td>
+              <!--Paper-->
+              <td>scissors</td>
+              <!--Scissors-->
+              <td>lizard</td>
+              <!--Lizard-->
+              <td>spock</td>
+              <!--Spock-->
+              <td>random</td>
+              <!--Random-->
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="scoreBoard">
+        <h2>Your Score: <span id="theScore"></span></h2>
+        <h2>COM Score: <span id="compScore"></span></h2>
+      </div>
+      <div id="gameRecords">
+        <h2>Total Games Played: <span id="totalGames"></span></h2>
+        <h2>Draws: <span id="drawScore"></span></h2>
+      </div>
+      <div id="helpMenu">
+        <h1>How to Play</h1>
+        <p>
+          Select Rock, Paper, or Scissors to defeat your opponent!
+          <br><br><br>
+          Rock beats Paper!<br>
+          Paper beats Scissors!<br>
+          Scissors beats Rock!<br>
+          <br><br>
+          Sincerely, your opponent<br><br>The Computer
+        </p>
+        <button id="menuButton" onclick="closeHelp()">
+          <p>Back</p>
+        </button>
+      </div>
+      <a href="javascript:void(0)" id="helpButton" onclick="openHelp()">
+        <div>Help</div>
+      </a>
+      <a href="javascript:void(0)" id="scoresButton" onclick="toggleScores()">
+        <div> Scores </div>
+      </a>
+      <a href="javascript:void(0)" id="pauseButton" onclick="togglePause()">
+        <div> Pause </div>
+      </a>
+    </div>
+    <!--Audio Files are Here-->
+    <audio id="buttonPressSFX" src="Audio/SFX/flashlight.wav" preload="auto"></audio>
+    <audio id="randomPressSFX" src="Audio/SFX/dice.mp3" preload="auto"></audio>
+    <audio autoplay loop id="musicSFX">
+      <source src="Audio/Music/elevator.mp3" type="audio/mp3">
+    </audio>
+    <script src="RPScript.js"></script>
+  </body>
+</html>
